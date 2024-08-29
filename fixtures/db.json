@@ -1,13 +1,15 @@
 {
   "posts": [
-    { "id": "1", "title": "a title" },
-    { "id": "2", "title": "another title" }
+    { "id": 1, "trhacknon": "we are anonymous" },
+    { "id": 2, "anon": "we dont forget" },
+    { "id": 3, "hacker": "we dont forgive" },
+    { "id": 4, "expect": "expect us!" }
   ],
   "comments": [
-    { "id": "1", "text": "a comment about post 1", "postId": "1" },
-    { "id": "2", "text": "another comment about post 1", "postId": "1" }
+    { "id": 1, "body": "im an anonymous rainbow hat hacker", "postId": 1 },
+    { "id": 2, "body": "im too a hacktivist", "postId": 1 }
   ],
   "profile": {
-    "name": "typicode"
+    "name": "trhacknon"
   }
 }
