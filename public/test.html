@@ -1,2 +1,267 @@
 <!-- Testing automatic serving of files from the 'public/' directory -->
-test
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    html {
+      font-size: 16px;
+      line-height: 1.5;
+      background-color: #f0f0f5;
+      color: #333;
+    }
+
+    body {
+      margin: 0 auto;
+      max-width: 720px;
+      padding: 0 16px;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+      color: #333;
+    }
+
+    a {
+      color: #7fff00;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    a:hover {
+      color: rebeccapurple;
+      transform: scale(1.05);
+    }
+
+    header {
+      margin-bottom: 32px;
+      padding: 16px 0;
+      text-align: center;
+      border-bottom: 2px solid #ff0000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav strong {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8rem;
+      color: #7fff00;
+    }
+
+    nav div a {
+      margin-left: 16px;
+      font-size: 1.2rem;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      background: #fff;
+      border: 2px solid #ff0000;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 24px;
+    }
+
+    li {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    li a {
+      color: purple;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    li a:hover {
+      color: blue;
+      transform: translateX(5px);
+    }
+
+    .my-12 p {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.2rem;
+      text-align: center;
+      color: transparent;
+      background-image: linear-gradient(135deg, #ff6b6b 0%, #ffe066 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    #json-display {
+      margin-top: 24px;
+      padding: 16px;
+      background: #f9f9f9;
+      border: 2px solid #00c9a7;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+      max-height: 400px;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      color: #333;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Dark mode styles */
+    @media (prefers-color-scheme: dark) {
+      html {
+        background-color: #1a202c;
+        color: #f0f0f5;
+      }
+
+      body {
+        background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+        color: #f0f0f5;
+      }
+
+      a {
+        color: #ffd700;
+      }
+
+      a:hover {
+        color: #ff6b6b;
+      }
+
+      ul {
+        background: rgba(0, 0, 0, 0.4);
+        border-color: #ffd700;
+      }
+
+      #json-display {
+        background: rgba(255, 255, 255, 0.1);
+        color: #f0f0f5;
+        border-color: #ffd700;
+      }
+
+      pre {
+        color: #f0f0f5;
+      }
+    }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background: linear-gradient(135deg, #ff0080 0%, #8000ff 100%);
+      text-align: center;
+      border-top: 3px solid #7fff00;
+      color: #fff;
+      font-family: 'Pacifico', cursive;
+      font-size: 1.4rem;
+      animation: flicker 2s infinite;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    footer span {
+      color: #ffd700;
+      font-weight: bold;
+      text-shadow: 0 0 5px #000;
+      font-size: 1.6rem;
+      animation: colorFlicker 3s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes colorFlicker {
+      0% {
+        color: #ffd700;
+      }
+      25% {
+        color: #ff4500;
+      }
+      50% {
+        color: #32cd32;
+      }
+      75% {
+        color: #00ffff;
+      }
+      100% {
+        color: #ffd700;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <strong>JSON Server</strong>
+      <div>
+        <a href="https://github.com/tucommenceapousser/json-server"><i class="fa fa-book"></i> Docs</a>
+        <a href="https://github.com/sponsors/typicode"><i class="fa fa-heart"></i> ♡ Sponsor</a>
+      </div>
+    </nav>
+  </header>
+  <main class="my-12">
+    <p>✧*｡٩(ˊᗜˋ*)و✧*｡</p>
+    <% if (Object.keys(it.data).length === 0) { %>
+      <p>No resources found in JSON file</p>
+    <% } %>
+    <% Object.entries(it.data).forEach(function([name]) { %>
+      <ul>
+        <li>
+          <a href="#" onclick="showJson('<%= name %>'); return false;">/<%= name %></a>
+          <span>
+            <% if (Array.isArray(it.data[name])) { %>
+              - <%= it.data[name].length %>
+              <%= it.data[name].length > 1 ? 'items' : 'item' %>
+          </span>
+          <% } %>
+        </li>
+      </ul>
+    <% }) %>
+    <div id="json-display">
+      <pre id="json-content"></pre>
+    </div>
+  </main>
+  <script>
+    function showJson(name) {
+      fetch(name)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('json-content').textContent = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+          document.getElementById('json-content').textContent = 'Error loading JSON data';
+        });
+    }
+  </script>
+      <footer>
+        <p>Developed with 💻 by <span>Trhacknon</span></p>
+      </footer>
+</body>
+
+</html>
